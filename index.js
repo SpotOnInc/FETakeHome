@@ -53,8 +53,6 @@ app.post('/register', (req, res) => {
     }).then((data) => {
         log.info(`'${ data[0].email }' registered`);
 
-        res.set('Content-Type', 'application/json');
-
         return res.send({
             email: data[0].email,
             created: data[0].created,
