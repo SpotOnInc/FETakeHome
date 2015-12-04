@@ -64,7 +64,7 @@ app.post('/register', (req, res) => {
     }).catch((err) => {
         log.error(err.message);
 
-        const conflict = err.message.indexOf('already registered') >= 0;
+        const conflict = err.message.indexOf('already a registered') >= 0;
 
         return res.status(conflict ? 409 : 500).send({
             message: err.message,
