@@ -1,0 +1,32 @@
+{
+  "name": "fetakehome",
+  "version": "1.0.0",
+  "description": "Take home task for SpotOn frontend interview candidates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpotOnInc/FETakeHome.git"
+  },
+  "author": "Josh Klar <josh@spoton.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SpotOnInc/FETakeHome/issues"
+  },
+  "homepage": "https://github.com/SpotOnInc/FETakeHome#readme",
+  "engines": {
+    "node": "^5.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "joi": "^7.0.1",
+    "lowdb": "^0.10.3",
+    "simple-node-logger": "^0.92.21"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3"
+  }
+}
