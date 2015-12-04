@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 
 // password must contain at least one number or special character
 // and be of mixed case
-const passwordRegex = /^(?=.*[0-9!@#\$%\^\&*\)\(+=._-])(?=.*[a-z])(?=.*[A-Z])(.*)$/;
+const passwordRegex = /^(?=.*[0-9!@#\$%\^\&*\)\(+=\._-])(?=.*[a-z])(?=.*[A-Z])(.*)$/;
 
 const registrationSchema = {
     email: joi.string().required().email(),
