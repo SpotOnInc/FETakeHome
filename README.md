@@ -1,7 +1,8 @@
 # FETakeHome
 
 Take home task for frontend interview candidates. Candidates: this README is,
-to some extent, your instruction booklet for this task.
+to some extent, your instruction booklet for this task, on top of the
+instructions provided in your email.
 
 ## Setup
 
@@ -13,7 +14,7 @@ We recommend a Linux or OSX environment to run the API server portion of this
 required, which is available in [brew](http://brew.sh) on OSX, or through your
 package manager of choice on Linux (Arch Linux as `nodejs`, others,
 instructions available [at
-NodeSource](https://github.com/nodesource/distributions).
+NodeSource](https://github.com/nodesource/distributions)).
 
 To get started, you'll need to clone this repository, install the server-side
 dependencies, and run the server:
@@ -30,19 +31,21 @@ node .
 
 The server will serve any files stored under `public`, without the `/public/`
 prefix. For example, the `index.html` of this project is served at
-`localhost:5000` but is at `public/index.html` on the filesystem.
+`http://localhost:5000/index.html` but is at `public/index.html` on the
+filesystem.
 
-The server exposes one JSON endpoint, `/register`. This endpoint is a dummy
-endpoint for user registration, and while it's not necessarily
-production-ready, it does the job for this task.
+The server currently exposes one JSON endpoint,
+`http://localhost:5000/register`. This endpoint is a dummy endpoint for user
+registration, and while it's not necessarily production-ready, it does the job
+for this task.
 
 ### POST Request `/register`
 
 The request to `/register` accepts a JSON body with two entries: `email` and
 `password`. `email` must be a valid email address. `password` must be a string
 of at least 8 characters, must contain at least one uppercase and at least one
-lowercase letter, and must contain at least one number and/or special
-character (`!@#$%^&*()+=._-`).
+lowercase letter, and must contain at least one number and/or special character
+(`!@#$%^&*()+=._-`).
 
 ### Response Example: Success
 
