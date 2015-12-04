@@ -12,6 +12,7 @@ const db = require('lowdb')('db.json', {
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
@@ -25,9 +26,6 @@ const registrationSchema = {
     email: joi.string().required().email(),
     password: joi.string().required().min(8).regex(passwordRegex),
 };
-
-app.get('/', (req, res) => {
-});
 
 app.post('/register', (req, res) => {
     const validation = joi.validate(req.body, registrationSchema, {
@@ -73,6 +71,11 @@ app.post('/register', (req, res) => {
 });
 
 const server = app.listen(parseInt(process.env.PORT) || 5000, '0.0.0.0', () => {
-    log.info(`Server started on port ${ server.address().port }`);
+    const address = server.address();
+    const addr = address.address;
+    const port = address.port;
+
+    log.info(`Registration API at [POST] http://${ addr }:${ port }/register`);
+    log.info(`Client application at http://${ addr }:${ port }/index.html`);
 });
 
