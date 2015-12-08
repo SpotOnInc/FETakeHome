@@ -1,6 +1,6 @@
 {
   "name": "fetakehome",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Take home task for SpotOn frontend interview candidates",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
     "express": "^4.13.3",
     "joi": "^7.0.1",
     "lowdb": "^0.10.3",
