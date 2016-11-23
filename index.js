@@ -14,11 +14,12 @@ const db = require('lowdb')('db.json', {
 const app = express();
 
 app.use(cors());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
+app.set('view engine', 'ejs');
 
 // password must contain at least one number or special character
 // and be of mixed case
@@ -29,6 +30,11 @@ const registrationSchema = {
     password: joi.string().required().min(8).regex(passwordRegex),
 };
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
+
 app.post('/register', (req, res) => {
     const validation = joi.validate(req.body, registrationSchema, {
         abortEarly: false,
@@ -37,14 +43,14 @@ app.post('/register', (req, res) => {
     });
 
     if (validation.error) {
-        return res.status(400).send(validation.error.details);
+        res.render('index', { status: 400, message: 'Validation error!'});
     }
 
     return db.find({
         email: req.body.email,
     }).then((user) => {
         if (user) {
-            throw new Error(`'${ req.body.email }' is already a registered email address`);
+            res.render('index', { status: 409, message: `'${ req.body.email }' is already a registered email address` });
         }
 
         return db.push({
@@ -69,6 +75,7 @@ app.post('/register', (req, res) => {
         });
     });
 });
+
 
 const server = app.listen(parseInt(process.env.PORT) || 5000, '0.0.0.0', () => {
     const address = server.address();

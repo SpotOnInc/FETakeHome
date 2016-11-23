@@ -1,0 +1,19 @@
+<h3>Register a user below</h3>
+
+<% if (locals.message && locals.status) { %>
+    <h1 style="color: red;">
+    <%= status %>: <%= message %></h1>
+<% } %>
+
+<form action="/register" method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" placeholder="example@email.com"/>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="password"/>
+    <br>
+    <small>Password must be mixed case and contain one special character and number</small>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
