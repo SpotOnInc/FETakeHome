@@ -43,14 +43,14 @@ app.post('/register', (req, res) => {
     });
 
     if (validation.error) {
-        res.render('index', { status: 400, message: 'Validation error!'});
+        res.status(400).render('index', { status: 400, message: 'Validation error!'});
     }
 
     return db.find({
         email: req.body.email,
     }).then((user) => {
         if (user) {
-            res.render('index', { status: 409, message: `'${ req.body.email }' is already a registered email address` });
+            res.status(409).render('index', { status: 409, message: `'${ req.body.email }' is already a registered email address` });
         }
 
         return db.push({
@@ -61,10 +61,7 @@ app.post('/register', (req, res) => {
     }).then((data) => {
         log.info(`'${ data[0].email }' registered`);
 
-        return res.send({
-            email: data[0].email,
-            created: data[0].created,
-        });
+        return res.status(200).render('index', { status: 200, message: `'${ data[0].email }' has been registered at ${ data[0].created }` });
     }).catch((err) => {
         log.error(err.message);
 
